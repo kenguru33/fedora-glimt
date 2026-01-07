@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build installer ISO
-        uses: blue-build/installer-action@v1
+        uses: ublue-os/installer@v1
         with:
           image: ghcr.io/${{ github.repository }}:latest
           tag: latest
