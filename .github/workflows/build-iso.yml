@@ -1,0 +1,25 @@
+name: Build Installer ISO
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-iso:
+    name: Build ISO
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build installer ISO
+        uses: blue-build/installer-action@v1
+        with:
+          image: ghcr.io/${{ github.repository }}:latest
+          tag: latest
+          artifact-name: installer-iso
